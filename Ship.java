@@ -43,4 +43,12 @@ public class Ship {
 		}
 	}
 
+	public boolean isShipSunk() {
+		for (ShipPart x : shipParts) {
+			if (!x.getHitStatus()) {
+				return false;
+			}
+		} 
+		return true;
+	}
 }
