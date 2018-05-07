@@ -11,8 +11,8 @@ public class Board {
 	public Board() {
 		this.ocean = new Water[OCEAN_DIM][OCEAN_DIM];
 		
-		for (int i = 0; i < OCEAN_DIM; i ++) {
-			for (int j = 0; j < OCEAN_DIM; j ++) {
+		for (int i = 0; i < OCEAN_DIM; i++) {
+			for (int j = 0; j < OCEAN_DIM; j++) {
 				this.ocean[i][j] = new Water();
 			}
 		}
@@ -34,9 +34,9 @@ public class Board {
 	}
 
 	public void printOcean() {
-		for (int i = 0; i < OCEAN_DIM; i ++) {
+		for (int i = 0; i < OCEAN_DIM; i++) {
 			System.out.println();
-			for (int j = 0; j < OCEAN_DIM; j ++) {
+			for (int j = 0; j < OCEAN_DIM; j++) {
 				System.out.printf("%s ", ocean[i][j]);
 			}
 		}

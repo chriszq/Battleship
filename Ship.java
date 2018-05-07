@@ -8,11 +8,11 @@ public class Ship {
 		//all ships length 3 for now
 		this.shipParts = new ShipPart[3];
 		
-		for (int i = 0; i < this.shipParts.length; i ++) {
+		for (int i = 0; i < this.shipParts.length; i++) {
 			this.shipParts[i] = new ShipPart();
 		}
 
-		horizontal = false;
+		this.horizontal = false;
 	}
 
 	//method not used anywhere yet
@@ -21,7 +21,7 @@ public class Ship {
 	}
 
 	public boolean isShipOverlap(int row, int col, boolean horizontal, Water[][] arr) {
-		for (int i = 0; i < shipParts.length; i ++) {
+		for (int i = 0; i < shipParts.length; i++) {
 			if (horizontal) {
 				if (shipParts[i].isShipPartOverlap(row, col + i, arr)) {
 				return true;
@@ -34,7 +34,7 @@ public class Ship {
 	}		
 
 	public void putShipAt(int row, int col, boolean horizontal, Water[][] arr) {
-		for (int i = 0; i < shipParts.length; i ++) {
+		for (int i = 0; i < shipParts.length; i++) {
 			if (horizontal) {
 				shipParts[i].putShipPartAt(row, col + i, arr);
 			} else {
