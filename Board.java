@@ -18,10 +18,10 @@ public class Board {
 		}
 
 		//hard code number of ships and one Ship type for testing purposes
-		fleet = new Ship[5];
+		this.fleet = new Ship[5];
 
-		for (int i = 0; i < fleet.length; i++) {
-			fleet[i] = new Ship();
+		for (int i = 0; i < this.fleet.length; i++) {
+			this.fleet[i] = new Ship();
 		}
 	}
   
@@ -30,14 +30,14 @@ public class Board {
 	}
 
 	public Ship[] getFleet() {
-		return fleet;
+		return this.fleet;
 	}
 
 	public void printOcean() {
 		for (int i = 0; i < OCEAN_DIM; i ++) {
 			System.out.println();
 			for (int j = 0; j < OCEAN_DIM; j ++) {
-				System.out.printf("%s ", this.ocean[i][j]);
+				System.out.printf("%s ", ocean[i][j]);
 			}
 		}
 		System.out.println();

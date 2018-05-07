@@ -6,10 +6,10 @@ public class Ship {
 
 	public Ship() {
 		//all ships length 3 for now
-		shipParts = new ShipPart[3];
+		this.shipParts = new ShipPart[3];
 		
-		for (int i = 0; i < shipParts.length; i ++) {
-			shipParts[i] = new ShipPart();
+		for (int i = 0; i < this.shipParts.length; i ++) {
+			this.shipParts[i] = new ShipPart();
 		}
 
 		horizontal = false;

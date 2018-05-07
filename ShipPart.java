@@ -11,8 +11,8 @@ public class ShipPart extends Water {
 
   @Override
 	public void fireAt() {
-		if (!this.getHitStatus()) {
-			this.setHitStatus(true);
+		if (!getHitStatus()) {
+			setHitStatus(true);
 			System.out.println("you hit the enemy");
 		} else {
 			System.out.println("you already fired at this spot");

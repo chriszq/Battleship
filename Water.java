@@ -21,8 +21,8 @@ public class Water {
 	}
 
 	public void fireAt() {
-		if (!this.getHitStatus()) {
-			this.setHitStatus(true);
+		if (!getHitStatus()) {
+			setHitStatus(true);
 			System.out.println("you missed");
 		} else {
 			System.out.println("you already fired at this spot");
