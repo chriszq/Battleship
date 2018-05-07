@@ -19,8 +19,6 @@ public class ShipPart extends Water {
 		}
 	}
 
-
-	//could move this to Board.class
 	public boolean isShipPartOverlap(int row, int col, Water[][] arr) {
 		return (arr[row][col].getClass() == ShipPart.class) ? true : false;
 	}

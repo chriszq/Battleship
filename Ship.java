@@ -20,19 +20,26 @@ public class Ship {
 		return this.shipParts;
 	}
 
-	//assume all Ships mus) be placed horizontally for now
-	public boolean isShipOverlap(int row, int col, Water[][] arr) {
+	public boolean isShipOverlap(int row, int col, boolean horizontal, Water[][] arr) {
 		for (int i = 0; i < shipParts.length; i ++) {
-			if (shipParts[i].isShipPartOverlap(row, col + i, arr)) {
+			if (horizontal) {
+				if (shipParts[i].isShipPartOverlap(row, col + i, arr)) {
 				return true;
-			}
+				}
+			} else if (shipParts[i].isShipPartOverlap(row + i, col, arr)) {
+					return true;
+			}    
 		}
 			return false;
-	}
+	}		
 
-	public void putShipAt(int row, int col, Water[][] arr) {
+	public void putShipAt(int row, int col, boolean horizontal, Water[][] arr) {
 		for (int i = 0; i < shipParts.length; i ++) {
-			shipParts[i].putShipPartAt(row, col + i, arr);
+			if (horizontal) {
+				shipParts[i].putShipPartAt(row, col + i, arr);
+			} else {
+					shipParts[i].putShipPartAt(row + i, col, arr);
+			}
 		}
 	}
 
