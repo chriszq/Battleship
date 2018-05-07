@@ -3,6 +3,7 @@ public class Board {
 	private static final int OCEAN_DIM = 10;
 
 	private Water[][] ocean;
+	private Ship[] fleet;
 	private int shotCount;
 	private int hitCount;
 	private int shipsSunkCount;
@@ -14,6 +15,13 @@ public class Board {
 			for (int j = 0; j < OCEAN_DIM; j ++) {
 				this.ocean[i][j] = new Water();
 			}
+		}
+
+		//hard code number of ships and one Ship type for testing purposes
+		fleet = new Ship[5];
+
+		for (int i = 0; i < fleet.length; i++) {
+			fleet[i] = new Ship();
 		}
 	}
   
@@ -29,6 +37,15 @@ public class Board {
 			}
 		}
 		System.out.println();
+	}
+
+	public boolean isFleetSunk() {
+		for (Ship x : fleet) {
+			if (!x.isShipSunk()) {
+				return false;
+			}
+		} 
+		return true;
 	}
 
 }
