@@ -29,6 +29,10 @@ public class Board {
 		return this.ocean;
 	}
 
+	public Ship[] getFleet() {
+		return fleet;
+	}
+
 	public void printOcean() {
 		for (int i = 0; i < OCEAN_DIM; i ++) {
 			System.out.println();
