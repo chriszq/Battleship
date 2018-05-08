@@ -1,12 +1,14 @@
 public class Ship {
-  
+
+	private ShipType shipType;
   private ShipPart[] shipParts;
 	private boolean horizontal;
-  //private int lives;
 
-	public Ship() {
-		//all ships length 3 for now
-		this.shipParts = new ShipPart[3];
+	//public Ship() {}
+		
+	public Ship(ShipType shipType) {
+		this.shipType = shipType;
+		this.shipParts = new ShipPart[shipType.getShipLength()];
 		
 		for (int i = 0; i < this.shipParts.length; i++) {
 			this.shipParts[i] = new ShipPart();
@@ -15,7 +17,10 @@ public class Ship {
 		this.horizontal = false;
 	}
 
-	//method not used anywhere yet
+	public ShipType getShipType() {
+		return this.shipType;
+	}
+
 	public ShipPart[] getShipParts() {
 		return this.shipParts;
 	}
