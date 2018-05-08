@@ -4,8 +4,6 @@ public class Ship {
   private ShipPart[] shipParts;
 	private boolean horizontal;
 
-	//public Ship() {}
-		
 	public Ship(ShipType shipType) {
 		this.shipType = shipType;
 		this.shipParts = new ShipPart[shipType.getShipLength()];
