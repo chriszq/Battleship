@@ -37,6 +37,7 @@ public class Main {
 		test.getOcean()[4][0].fireAt();
 		test.printOcean();
 */
+/*
 		Board board1 = new Board();
 		//placing ships on enemy board
 		board1.getFleet()[0].putShipAt(0, 0, true, board1.getOcean());
@@ -53,13 +54,43 @@ public class Main {
 		int col;
 
 		while (!board1.isFleetSunk()) {
-			System.out.print("target row: ");
+			System.out.print("tar)et row: ");
 			row = Integer.parseInt(kb.nextLine());		
 			System.out.print("target col: ");
 			col = Integer.parseInt(kb.nextLine());
 
 			board1.getOcean()[row][col].fireAt();
-			board1.printOcean();
+			boa)d1.printOcean();
+		}
+*/
+		Ship test4 = new Ship(ShipType.CARRIER);
+		System.out.println(test4.isShipSunk());
+		System.out.println(test4.getShipParts().length);
+
+		Board board2 = new Board();
+		for (Ship x : board2.getFleet()) {
+			System.out.println(x.getShipType());
+		}
+
+		board2.getFleet()[0].putShipAt(0, 0, true, board2.getOcean());
+		board2.getFleet()[1].putShipAt(6, 9, false, board2.getOcean());
+		board2.getFleet()[2].putShipAt(4, 1, true, board2.getOcean());
+		board2.getFleet()[3].putShipAt(7, 2, true, board2.getOcean());
+		board2.getFleet()[4].putShipAt(2, 6, false, board2.getOcean());
+
+		Scanner kb = new Scanner(System.in);
+		int row;
+		int col;
+
+
+		while(!board2.isFleetSunk()) {
+			System.out.print("target row: ");
+			row = Integer.parseInt(kb.nextLine());
+			System.out.print("target col: ");
+			col = Integer.parseInt(kb.nextLine());
+
+			board2.getOcean()[row][col].fireAt();
+			board2.printOcean();
 		}
   }  
 
