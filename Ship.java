@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Ship {
 
 	private ShipType shipType;
@@ -44,6 +46,11 @@ public class Ship {
 					shipParts[i].putShipPartAt(row + i, col, arr);
 			}
 		}
+	}
+
+	public void putShipAtRandom(Water[] arr) {
+		Random r = new Random();
+		//WIP
 	}
 
 	public boolean isShipSunk() {
