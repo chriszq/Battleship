@@ -17,11 +17,12 @@ public class Board {
 			}
 		}
 
-		//hard code number of ships and one Ship type for testing purposes
-		this.fleet = new Ship[5];
+		this.fleet = new Ship[ShipType.values().length];
 
-		for (int i = 0; i < this.fleet.length; i++) {
-			this.fleet[i] = new Ship();
+		int count = 0;
+		for (ShipType shipType : ShipType.values()) {
+			this.fleet[count] = new Ship(shipType);
+			count++;
 		}
 	}
   
