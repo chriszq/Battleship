@@ -2,23 +2,23 @@ public enum ShipType {
   
   CARRIER ("Carrier", 5),
   BATTLESHIP ("Battleship", 4),
-  CRUISER ("Cruiser", 3),
+	CRUISER ("Cruiser", 3),
 	SUBMARINE ("Submarine", 3),
   DESTROYER ("Destroyer", 2);
 
-	private final String shipName;
-	private final int shipLength;
+	private final String name;
+	private final int length;
 
-	private ShipType(String shipName, int shipLength) {
-		this.shipName = shipName;
-		this.shipLength = shipLength;
+	private ShipType(String name, int length) {
+		this.name = name;
+		this.length = length;
 	}
 
-	public String getShipName() {
-		return this.shipName;
+	public String getName() {
+		return this.name;
 	}
 
-	public int getShipLength() {
-		return this.shipLength;
+	public int getLength() {
+		return this.length;
 	}
 }
