@@ -2,31 +2,31 @@ public class Water {
   
   protected boolean hitStatus;
 
-	public Water() {
+  public Water() {
 
-		this.hitStatus = false;
-	}
+    this.hitStatus = false;
+  }
 
-	public boolean getHitStatus() {
-		return this.hitStatus;
-	}
+  public boolean getHitStatus() {
+    return this.hitStatus;
+  }
 
-	public void setHitStatus(boolean status) {
-		this.hitStatus = status;
-	}
+  public void setHitStatus(boolean status) {
+    this.hitStatus = status;
+  }
 
-	@Override
-	public String toString() {
-		return (hitStatus) ? "x" : "-";
-	}
+  @Override
+  public String toString() {
+    return (hitStatus) ? "x" : "-";
+  }
 
-	public void fireAt() {
-		if (!getHitStatus()) {
-			setHitStatus(true);
-			System.out.println("you missed");
-		} else {
-			System.out.println("you already fired at this spot");
-		}
-	}
+  public void fireAt() {
+    if (!getHitStatus()) {
+      setHitStatus(true);
+      System.out.println("you missed");
+    } else {
+      System.out.println("you already fired at this spot");
+    }
+  }
 
 }
