@@ -48,9 +48,21 @@ public class Ship {
 		}
 	}
 
-	public void putShipAtRandom(Water[] arr) {
+	public void putShipAtRandom(Water[][] arr) {
 		Random r = new Random();
-		//WIP
+		int randRow;
+		int randCol;
+		boolean randOrientation;
+
+		do {
+			randRow = r.nextInt(10);
+			randCol = r.nextInt(10);
+			randOrientation = (r.nextInt(2) == 0) ? false : true;	
+		} while (isShipOverlap(randRow, randCol, randOrientation, arr));
+
+		putShipAt(randRow, randCol, randOrientation, arr);
+
+		System.out.printf("the randomed values are: %s, %s, %s\n ", randRow, randCol, randOrientation);
 	}
 
 	public boolean isShipSunk() {
