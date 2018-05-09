@@ -1,6 +1,6 @@
 public class Board {
 
-  private static final int OCEAN_DIM = 10;
+  public static final int OCEAN_DIM = 10;
 
   private Water[][] ocean;
   private Ship[] fleet;

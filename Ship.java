@@ -55,8 +55,8 @@ public class Ship {
     boolean randOrientation;
 
     do {
-      randRow = r.nextInt(10);
-      randCol = r.nextInt(10);
+      randRow = r.nextInt(Board.OCEAN_DIM);
+      randCol = r.nextInt(Board.OCEAN_DIM);
       randOrientation = (r.nextInt(2) == 0) ? false : true;	
     } while (isShipOverlap(randRow, randCol, randOrientation, arr));
 
