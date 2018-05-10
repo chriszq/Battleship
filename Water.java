@@ -3,7 +3,6 @@ public class Water {
   protected boolean hitStatus;
 
   public Water() {
-
     this.hitStatus = false;
   }
 
