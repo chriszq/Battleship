@@ -66,13 +66,21 @@ public class Ship {
 
   public void putShipAtRandom(Water[][] arr) {
     Random r = new Random();
-    int randRow;
-    int randCol;
+    int randRow = 0;
+    int randCol = 0;
 
     do {
-      randRow = r.nextInt(Board.OCEAN_DIM);
-      randCol = r.nextInt(Board.OCEAN_DIM);
       orientation = (r.nextInt(2) == 0) ? Orientation.VERTICAL : Orientation.HORIZONTAL;
+      switch (orientation) {
+        case HORIZONTAL:
+          randRow = r.nextInt(Board.OCEAN_DIM);
+          randCol = r.nextInt(Board.OCEAN_DIM - shipParts.length + 1);
+          break;
+        case VERTICAL:
+          randRow = r.nextInt(Board.OCEAN_DIM - shipParts.length + 1);
+          randCol = r.nextInt(Board.OCEAN_DIM);
+          break;
+      }
     } while (isShipOverlap(randRow, randCol, arr));
 
     putShipAt(randRow, randCol, arr);
