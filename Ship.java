@@ -4,7 +4,7 @@ public class Ship {
 
   private ShipType shipType;
   private ShipPart[] shipParts;
-  private boolean horizontal;
+  private Orientation orientation;
 
   public Ship(ShipType shipType) {
     this.shipType = shipType;
@@ -14,7 +14,7 @@ public class Ship {
       this.shipParts[i] = new ShipPart();
     }
 
-    this.horizontal = false;
+    this.orientation = Orientation.HORIZONTAL;
   }
 
   public ShipType getShipType() {
@@ -25,26 +25,42 @@ public class Ship {
     return this.shipParts;
   }
 
-  public boolean isShipOverlap(int row, int col, boolean horizontal, Water[][] arr) {
-    for (int i = 0; i < shipParts.length; i++) {
-      if (horizontal) {
-        if (shipParts[i].isShipPartOverlap(row, col + i, arr)) {
-          return true;
+  public Orientation getOrientation() {
+    return this.orientation;
+  }
+
+  public boolean isShipOverlap(int row, int col, Water[][] arr) {
+    switch (orientation) {
+      case HORIZONTAL:
+        for (int i = 0; i < shipParts.length; i++) {
+          if (shipParts[i].isShipPartOverlap(row, col + i, arr)) {
+            return true;
+          }
         }
-      } else if (shipParts[i].isShipPartOverlap(row + i, col, arr)) {
-          return true;
-      }    
+        return false;
+      case VERTICAL:
+        for (int i = 0; i < shipParts.length; i++) {
+          if (shipParts[i].isShipPartOverlap(row + i, col, arr)) {
+            return true;
+          }
+        }
+        return false;
     }
     return false;
-  }		
+  }
 
-  public void putShipAt(int row, int col, boolean horizontal, Water[][] arr) {
-    for (int i = 0; i < shipParts.length; i++) {
-      if (horizontal) {
-        shipParts[i].putShipPartAt(row, col + i, arr);
-      } else {
+  public void putShipAt(int row, int col, Water[][] arr) {
+    switch (orientation) {
+      case HORIZONTAL:
+        for (int i = 0; i < shipParts.length; i++) {
+          shipParts[i].putShipPartAt(row, col + i, arr);
+        }
+        break;
+      case VERTICAL:
+        for (int i = 0; i < shipParts.length; i++) {
           shipParts[i].putShipPartAt(row + i, col, arr);
-      }
+        }
+        break;
     }
   }
 
@@ -52,17 +68,17 @@ public class Ship {
     Random r = new Random();
     int randRow;
     int randCol;
-    boolean randOrientation;
 
     do {
       randRow = r.nextInt(Board.OCEAN_DIM);
       randCol = r.nextInt(Board.OCEAN_DIM);
-      randOrientation = (r.nextInt(2) == 0) ? false : true;	
-    } while (isShipOverlap(randRow, randCol, randOrientation, arr));
+      orientation = (r.nextInt(2) == 0) ? Orientation.VERTICAL : Orientation.HORIZONTAL;
+    } while (isShipOverlap(randRow, randCol, arr));
 
-    putShipAt(randRow, randCol, randOrientation, arr);
+    putShipAt(randRow, randCol, arr);
 
-    System.out.printf("the randomed values are: %s, %s, %s\n ", randRow, randCol, randOrientation);
+    System.out.printf("the randomed values are: %s, %s, %s\n ", randRow, randCol, orientation);
+
   }
 
   public boolean isShipSunk() {
