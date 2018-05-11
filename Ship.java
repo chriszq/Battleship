@@ -97,4 +97,19 @@ public class Ship {
     } 
     return true;
   }
+
+  public boolean isAllShipPartsOfShipHit() {
+    for (ShipPart x : shipParts) {
+      if (x.getHitStatus() == HitStatus.UNHIT) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public void markShipAsSunk() {
+    for (ShipPart x : shipParts) {
+      x.setHitStatus(HitStatus.SUNK);
+    }
+  }
 }
