@@ -1,22 +1,48 @@
-public class ShipPart extends Water {
+public class ShipPart implements Grid {
+
+  private HitStatus hitStatus;
 
   public ShipPart() {
-    this.hitStatus = false;
+    this.hitStatus = HitStatus.UNHIT;
   }
 
   @Override
-  public String toString() {
-    return (hitStatus) ? "@" : "-";
+  public HitStatus getHitStatus() {
+    return this.hitStatus;
+  }
+
+  @Override
+  public char getIcon() {
+    switch (hitStatus) {
+      case UNHIT:
+        return '-';
+      case HIT: 
+        return '@';
+      case SUNK:
+        return '#';
+      default:
+        return '?';
+    }
   }
 
   @Override
   public void fireAt() {
-    if (!getHitStatus()) {
-      setHitStatus(true);
-      System.out.println("you hit the enemy");
-    } else {
-      System.out.println("you already fired at this spot");
+    switch (hitStatus) {
+      case UNHIT:
+        setHitStatus(HitStatus.HIT);
+        System.out.println("you hit something");
+        break;
+      case HIT:
+        System.out.println("you already hit something here");
+        break;
+      case SUNK:
+        System.out.println("you already sunk this ship");
+        break;
     }
+  }
+
+  public void setHitStatus(HitStatus hitStatus) {
+    this.hitStatus = hitStatus;
   }
 
   public boolean isShipPartOverlap(int row, int col, Water[][] arr) {
@@ -26,5 +52,4 @@ public class ShipPart extends Water {
   public void putShipPartAt(int row, int col, Water[][] arr) {
     arr[row][col] = this;
   }
-
 }
