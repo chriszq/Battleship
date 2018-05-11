@@ -29,7 +29,7 @@ public class Ship {
     return this.orientation;
   }
 
-  public boolean isShipOverlap(int row, int col, Water[][] arr) {
+  public boolean isShipOverlap(int row, int col, Grid[][] arr) {
     switch (orientation) {
       case HORIZONTAL:
         for (int i = 0; i < shipParts.length; i++) {
@@ -49,7 +49,7 @@ public class Ship {
     return false;
   }
 
-  public void putShipAt(int row, int col, Water[][] arr) {
+  public void putShipAt(int row, int col, Grid[][] arr) {
     switch (orientation) {
       case HORIZONTAL:
         for (int i = 0; i < shipParts.length; i++) {
@@ -64,7 +64,7 @@ public class Ship {
     }
   }
 
-  public void putShipAtRandom(Water[][] arr) {
+  public void putShipAtRandom(Grid[][] arr) {
     Random r = new Random();
     int randRow = 0;
     int randCol = 0;
@@ -91,7 +91,7 @@ public class Ship {
 
   public boolean isShipSunk() {
     for (ShipPart x : shipParts) {
-      if (!x.getHitStatus()) {
+      if (x.getHitStatus() != HitStatus.SUNK) {
         return false;
       }
     } 

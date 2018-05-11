@@ -45,11 +45,11 @@ public class ShipPart implements Grid {
     this.hitStatus = hitStatus;
   }
 
-  public boolean isShipPartOverlap(int row, int col, Water[][] arr) {
+  public boolean isShipPartOverlap(int row, int col, Grid[][] arr) {
     return (arr[row][col].getClass() == ShipPart.class) ? true : false;
   }
 
-  public void putShipPartAt(int row, int col, Water[][] arr) {
+  public void putShipPartAt(int row, int col, Grid[][] arr) {
     arr[row][col] = this;
   }
 }
