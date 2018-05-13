@@ -1,12 +1,14 @@
+import java.util.Random;
+
 public class Board {
 
   public static final int OCEAN_DIM = 10;
 
   private Grid[][] ocean;
   private Ship[] fleet;
-  private int shotCount;
-  private int hitCount;
-  private int shipsSunkCount;
+  //private int shotCount;
+  //private int hitCount;
+  //private int shipsSunkCount;
 
   public Board() {
     this.ocean = new Grid[OCEAN_DIM][OCEAN_DIM];
@@ -52,4 +54,76 @@ public class Board {
     return true;
   }
 
+  public boolean isShipPartOverlap(int row, int col) {
+    return (ocean[row][col].getClass() == ShipPart.class) ? true : false;
+  }
+
+  public void putShipPartAt(int row, int col, ShipPart shipPart) {
+    ocean[row][col] = shipPart;
+  }
+
+  public boolean isShipOverlap(int row, int col, Ship ship) {
+    switch (ship.getOrientation()) {
+      case HORIZONTAL:
+        for (int i = 0; i < ship.getShipParts().length; i++) {
+          if (isShipPartOverlap(row, col + i)) {
+            return true;
+          }
+        }
+        return false;
+      case VERTICAL:
+        for (int i = 0; i < ship.getShipParts().length; i++) {
+          if (isShipPartOverlap(row + i, col)) {
+            return true;
+          }
+        }
+        return false;
+    }
+    return false;
+  }
+
+  public void putShipAt(int row, int col, Ship ship) {
+    switch (ship.getOrientation()) {
+      case HORIZONTAL:
+        for (int i = 0; i < ship.getShipParts().length; i++) {
+          putShipPartAt(row, col + i, ship.getShipParts()[i]);
+        }
+        break;
+      case VERTICAL:
+        for (int i = 0; i < ship.getShipParts().length; i++) {
+          putShipPartAt(row + i, col, ship.getShipParts()[i]);
+        }
+        break;
+    }
+  }
+
+  public void putShipAtRandom(Ship ship) {
+    Random r = new Random();
+    int randRow = 0;
+    int randCol = 0;
+
+    do {
+      if (r.nextInt(2) == 0) {
+        ship.setOrientation(Orientation.VERTICAL);
+      } else {
+        ship.setOrientation(Orientation.HORIZONTAL);
+      }
+
+      switch (ship.getOrientation()) {
+        case HORIZONTAL:
+          randRow = r.nextInt(OCEAN_DIM);
+          randCol = r.nextInt(OCEAN_DIM - ship.getShipParts().length + 1);
+          break;
+        case VERTICAL:
+          randRow = r.nextInt(OCEAN_DIM - ship.getShipParts().length + 1);
+          randCol = r.nextInt(OCEAN_DIM);
+          break;
+      }
+    } while (isShipOverlap(randRow, randCol, ship));
+
+    putShipAt(randRow, randCol, ship);
+
+    //temporary for testing
+    System.out.printf("random stuff are: %s, %s, %s\n ", randRow, randCol, ship.getOrientation());
+  }
 }

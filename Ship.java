@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class Ship {
 
   private ShipType shipType;
@@ -29,64 +27,8 @@ public class Ship {
     return this.orientation;
   }
 
-  public boolean isShipOverlap(int row, int col, Grid[][] arr) {
-    switch (orientation) {
-      case HORIZONTAL:
-        for (int i = 0; i < shipParts.length; i++) {
-          if (shipParts[i].isShipPartOverlap(row, col + i, arr)) {
-            return true;
-          }
-        }
-        return false;
-      case VERTICAL:
-        for (int i = 0; i < shipParts.length; i++) {
-          if (shipParts[i].isShipPartOverlap(row + i, col, arr)) {
-            return true;
-          }
-        }
-        return false;
-    }
-    return false;
-  }
-
-  public void putShipAt(int row, int col, Grid[][] arr) {
-    switch (orientation) {
-      case HORIZONTAL:
-        for (int i = 0; i < shipParts.length; i++) {
-          shipParts[i].putShipPartAt(row, col + i, arr);
-        }
-        break;
-      case VERTICAL:
-        for (int i = 0; i < shipParts.length; i++) {
-          shipParts[i].putShipPartAt(row + i, col, arr);
-        }
-        break;
-    }
-  }
-
-  public void putShipAtRandom(Grid[][] arr) {
-    Random r = new Random();
-    int randRow = 0;
-    int randCol = 0;
-
-    do {
-      orientation = (r.nextInt(2) == 0) ? Orientation.VERTICAL : Orientation.HORIZONTAL;
-      switch (orientation) {
-        case HORIZONTAL:
-          randRow = r.nextInt(Board.OCEAN_DIM);
-          randCol = r.nextInt(Board.OCEAN_DIM - shipParts.length + 1);
-          break;
-        case VERTICAL:
-          randRow = r.nextInt(Board.OCEAN_DIM - shipParts.length + 1);
-          randCol = r.nextInt(Board.OCEAN_DIM);
-          break;
-      }
-    } while (isShipOverlap(randRow, randCol, arr));
-
-    putShipAt(randRow, randCol, arr);
-
-    System.out.printf("the randomed values are: %s, %s, %s\n ", randRow, randCol, orientation);
-
+  public void setOrientation(Orientation orientation) {
+    this.orientation = orientation;
   }
 
   public boolean isShipSunk() {
@@ -100,7 +42,7 @@ public class Ship {
 
   public boolean isAllShipPartsOfShipHit() {
     for (ShipPart x : shipParts) {
-      if (x.getHitStatus() == HitStatus.UNHIT) {
+      if (x.getHitStatus() == HitStatus.UNHIT || x.getHitStatus() == HitStatus.SUNK) {
         return false;
       }
     }
