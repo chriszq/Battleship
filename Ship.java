@@ -1,7 +1,6 @@
 /*
  * A Ship can be one of the (five) ShipTypes. The number of ShipParts represents the Ship length,
  * e.g. Battleship contains 4 ShipParts because it has length 4.
- * Ships can only be horizontal or vertical.
  * All ShipParts belonging to a Ship are considered SUNK only after they have all been HIT.
  * When this happens the Ship is considered SUNK.
  */
