@@ -1,3 +1,7 @@
+/*
+ * All Ship Types that each player possess. There are two ships with length 3.
+ */
+
 public enum ShipType {
   
   CARRIER ("Carrier", 5),

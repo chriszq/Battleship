@@ -1,3 +1,7 @@
+/*
+ * Represents part of a Ship. Each Ship is made of an Array of ShipParts.
+ * Changes it's display icon depending on HitStatus.
+ */
 public class ShipPart implements Grid {
 
   private HitStatus hitStatus;

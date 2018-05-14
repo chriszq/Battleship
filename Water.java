@@ -1,3 +1,8 @@
+/*
+ * Represents the water that surrounds all the ships.
+ * Water and Ship objects are indistinguishable to the opposing player until they have been hit.
+ */
+
 public class Water implements Grid {
 
   private HitStatus hitStatus;
