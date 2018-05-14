@@ -36,11 +36,20 @@ public class Board {
   }
 
   public void printOcean() {
+    /*print column numbers*/
+    System.out.print("    ");
     for (int i = 0; i < OCEAN_DIM; i++) {
-      System.out.println();
+      System.out.printf("%d ", i);
+    }
+   /*print column separator*/ 
+    System.out.println("\n_______________________");
+  /*print row numbers and separators*/
+    for (int i = 0; i < OCEAN_DIM; i++) {
+      System.out.printf("%d | ", i);
       for (int j = 0; j < OCEAN_DIM; j++) {
         System.out.printf("%s ", ocean[i][j].getIcon());
       }
+      System.out.println();
     }
     System.out.println();
   }
