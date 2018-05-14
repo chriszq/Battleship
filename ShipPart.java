@@ -26,21 +26,6 @@ public class ShipPart implements Grid {
   }
 
   @Override
-  public void fireAt() {
-    switch (hitStatus) {
-      case UNHIT:
-        setHitStatus(HitStatus.HIT);
-        System.out.println("you hit something");
-        break;
-      case HIT:
-        System.out.println("you already hit something here");
-        break;
-      case SUNK:
-        System.out.println("you already sunk this ship");
-        break;
-    }
-  }
-
   public void setHitStatus(HitStatus hitStatus) {
     this.hitStatus = hitStatus;
   }

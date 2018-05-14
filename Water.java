@@ -24,21 +24,6 @@ public class Water implements Grid {
   }
 
   @Override
-  public void fireAt() {
-    switch (hitStatus) {
-      case UNHIT:
-        setHitStatus(HitStatus.HIT);
-        System.out.println("you missed");
-        break;
-      case HIT:
-        System.out.println("you already fired at this spot");
-        break;
-      default:
-        System.out.println("error occured. cannot sink empty spot ");
-        break;
-    }
-  }
-
   public void setHitStatus(HitStatus hitStatus) {
     this.hitStatus = hitStatus;
   }
