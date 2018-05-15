@@ -135,4 +135,29 @@ public class Board {
     //temporary for testing
     System.out.printf("random stuff are: %s, %s, %s\n ", randRow, randCol, ship.getOrientation());
   }
+
+  public boolean isCoordOutOfBounds(int coord) {
+    return (coord >= OCEAN_DIM || coord < 0);
+  }
+
+  public boolean isShipOutOfBounds(Ship ship, int row, int col) {
+    switch (ship.getOrientation()) {
+      case HORIZONTAL:
+        for (int i = col; i < col + ship.getShipType().getLength(); i++) {
+          if (isCoordOutOfBounds(i)) {
+            return true;
+           }
+        }
+        return (isCoordOutOfBounds(row));
+      case VERTICAL:
+        for (int i = row; i < row + ship.getShipType().getLength(); i++) {
+          if (isCoordOutOfBounds(i)) {
+            return true;
+          }
+        }
+        return (isCoordOutOfBounds(col));
+      default:
+        return true;
+    }
+  }
 }
