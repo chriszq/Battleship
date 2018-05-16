@@ -37,7 +37,7 @@ public class Human implements Player {
 
       System.out.printf("%s bow row number: ", x.getShipType().getName());
       while (!kb.hasNext("[0-9]{1}")) {
-        System.out.printf("Invalid row number. Must be integer in the range [0,9].");
+        System.out.printf("Must be integer in the range [0,%s].", Board.OCEAN_DIM - 1);
         System.out.printf("\n%s bow row number: ", x.getShipType().getName());
         kb.next();
       }
@@ -45,7 +45,7 @@ public class Human implements Player {
 
       System.out.printf("%s bow column number: ", x.getShipType().getName());
       while (!kb.hasNext("[0-9]{1}")) {
-        System.out.printf("Invalid column number. Must be integer in the range [0,9].");
+        System.out.printf("Must be integer in the range [0,%s].", Board.OCEAN_DIM - 1);
         System.out.printf("\n%s bow column number: ", x.getShipType().getName());
         kb.next();
       }
@@ -60,7 +60,28 @@ public class Human implements Player {
 
   @Override
   public void fireAt(Board board) {
+    int row = 0;
+    int col = 0;
 
+    Scanner kb = new Scanner(System.in);
+
+    System.out.printf("row number to fire at: ");
+    while (!kb.hasNext("[0-9]{1}")) {
+      System.out.printf("Must be integer in the range [0,%s].", Board.OCEAN_DIM - 1);
+      System.out.printf("\nrow number to fire at: ");
+      kb.next();
+    }
+    row = kb.nextInt();
+
+    System.out.printf("column number to fire at: ");
+    while (!kb.hasNext("[0-9]{1}")) {
+      System.out.printf("Must be integer in the range [0,%s].", Board.OCEAN_DIM - 1);
+      System.out.printf("\ncolumn number to fire at: ");
+      kb.next();
+    }
+    col = kb.nextInt();
+
+    board.getOcean()[row][col].setHitStatus(HitStatus.HIT);
   }
 
   public Board getBoard() {
