@@ -140,7 +140,7 @@ public class Board {
     return (coord >= OCEAN_DIM || coord < 0);
   }
 
-  public boolean isShipOutOfBounds(Ship ship, int row, int col) {
+  public boolean isShipOutOfBounds(int row, int col, Ship ship) {
     switch (ship.getOrientation()) {
       case HORIZONTAL:
         for (int i = col; i < col + ship.getShipType().getLength(); i++) {
