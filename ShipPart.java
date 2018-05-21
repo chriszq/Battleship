@@ -21,9 +21,9 @@ public class ShipPart implements Grid {
       case UNHIT:
         return '-';
       case HIT: 
-        return '@';
+        return '!';
       case SUNK:
-        return '#';
+        return '@';
       default:
         return '?';
     }
