@@ -74,14 +74,14 @@ public class Board {
   public boolean isShipOverlap(int row, int col, Ship ship) {
     switch (ship.getOrientation()) {
       case HORIZONTAL:
-        for (int i = 0; i < ship.getShipParts().length; i++) {
+        for (int i = 0, n = ship.getShipParts().length; i < n; i++) {
           if (isShipPartOverlap(row, col + i)) {
             return true;
           }
         }
         return false;
       case VERTICAL:
-        for (int i = 0; i < ship.getShipParts().length; i++) {
+        for (int i = 0, n = ship.getShipParts().length; i < n; i++) {
           if (isShipPartOverlap(row + i, col)) {
             return true;
           }
@@ -94,12 +94,12 @@ public class Board {
   public void putShipAt(int row, int col, Ship ship) {
     switch (ship.getOrientation()) {
       case HORIZONTAL:
-        for (int i = 0; i < ship.getShipParts().length; i++) {
+        for (int i = 0, n = ship.getShipParts().length; i < n; i++) {
           putShipPartAt(row, col + i, ship.getShipParts()[i]);
         }
         break;
       case VERTICAL:
-        for (int i = 0; i < ship.getShipParts().length; i++) {
+        for (int i = 0, n = ship.getShipParts().length; i < n; i++) {
           putShipPartAt(row + i, col, ship.getShipParts()[i]);
         }
         break;
@@ -143,14 +143,14 @@ public class Board {
   public boolean isShipOutOfBounds(int row, int col, Ship ship) {
     switch (ship.getOrientation()) {
       case HORIZONTAL:
-        for (int i = col; i < col + ship.getShipType().getLength(); i++) {
+        for (int i = col, n = col + ship.getShipType().getLength(); i < n; i++) {
           if (isCoordOutOfBounds(i)) {
             return true;
            }
         }
         return (isCoordOutOfBounds(row));
       case VERTICAL:
-        for (int i = row; i < row + ship.getShipType().getLength(); i++) {
+        for (int i = row, n = row + ship.getShipType().getLength(); i < n; i++) {
           if (isCoordOutOfBounds(i)) {
             return true;
           }

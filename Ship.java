@@ -15,7 +15,7 @@ public class Ship {
     this.shipType = shipType;
     this.shipParts = new ShipPart[shipType.getLength()];
 
-    for (int i = 0; i < this.shipParts.length; i++) {
+    for (int i = 0, n = this.shipParts.length; i < n; i++) {
       this.shipParts[i] = new ShipPart();
     }
 
