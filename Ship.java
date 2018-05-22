@@ -5,18 +5,20 @@
  * When this happens the Ship is considered SUNK.
  */
 
+import java.util.ArrayList;
+
 public class Ship {
 
   private ShipType shipType;
-  private ShipPart[] shipParts;
+  private ArrayList<ShipPart> shipParts;
   private Orientation orientation;
 
   public Ship(ShipType shipType) {
     this.shipType = shipType;
-    this.shipParts = new ShipPart[shipType.getLength()];
+    this.shipParts = new ArrayList<ShipPart>(shipType.getLength());
 
-    for (int i = 0, n = this.shipParts.length; i < n; i++) {
-      this.shipParts[i] = new ShipPart();
+    for (int i = 0, n = shipType.getLength(); i < n; i++) {
+      this.shipParts.add(new ShipPart());
     }
 
     this.orientation = Orientation.HORIZONTAL;
@@ -26,7 +28,7 @@ public class Ship {
     return this.shipType;
   }
 
-  public ShipPart[] getShipParts() {
+  public ArrayList<ShipPart> getShipParts() {
     return this.shipParts;
   }
 
@@ -43,7 +45,7 @@ public class Ship {
       if (x.getHitStatus() != HitStatus.SUNK) {
         return false;
       }
-    } 
+    }
     return true;
   }
 
@@ -51,7 +53,7 @@ public class Ship {
     for (ShipPart x : shipParts) {
       if (x.getHitStatus() == HitStatus.UNHIT || x.getHitStatus() == HitStatus.SUNK) {
         return false;
-      }
+      } 
     }
     return true;
   }

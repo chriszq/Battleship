@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Board {
@@ -6,9 +7,6 @@ public class Board {
 
   private Grid[][] ocean;
   private Ship[] fleet;
-  //private int shotCount;
-  //private int hitCount;
-  //private int shipsSunkCount;
 
   public Board() {
     this.ocean = new Grid[OCEAN_DIM][OCEAN_DIM];
@@ -74,14 +72,14 @@ public class Board {
   public boolean isShipOverlap(int row, int col, Ship ship) {
     switch (ship.getOrientation()) {
       case HORIZONTAL:
-        for (int i = 0, n = ship.getShipParts().length; i < n; i++) {
+        for (int i = 0, n = ship.getShipParts().size(); i < n; i++) {
           if (isShipPartOverlap(row, col + i)) {
             return true;
           }
         }
         return false;
       case VERTICAL:
-        for (int i = 0, n = ship.getShipParts().length; i < n; i++) {
+        for (int i = 0, n = ship.getShipParts().size(); i < n; i++) {
           if (isShipPartOverlap(row + i, col)) {
             return true;
           }
@@ -94,13 +92,13 @@ public class Board {
   public void putShipAt(int row, int col, Ship ship) {
     switch (ship.getOrientation()) {
       case HORIZONTAL:
-        for (int i = 0, n = ship.getShipParts().length; i < n; i++) {
-          putShipPartAt(row, col + i, ship.getShipParts()[i]);
+        for (int i = 0, n = ship.getShipParts().size(); i < n; i++) {
+          putShipPartAt(row, col + i, ship.getShipParts().get(i));
         }
         break;
       case VERTICAL:
-        for (int i = 0, n = ship.getShipParts().length; i < n; i++) {
-          putShipPartAt(row + i, col, ship.getShipParts()[i]);
+        for (int i = 0, n = ship.getShipParts().size(); i < n; i++) {
+          putShipPartAt(row + i, col, ship.getShipParts().get(i));
         }
         break;
     }
@@ -121,10 +119,10 @@ public class Board {
       switch (ship.getOrientation()) {
         case HORIZONTAL:
           randRow = r.nextInt(OCEAN_DIM);
-          randCol = r.nextInt(OCEAN_DIM - ship.getShipParts().length + 1);
+          randCol = r.nextInt(OCEAN_DIM - ship.getShipParts().size() + 1);
           break;
         case VERTICAL:
-          randRow = r.nextInt(OCEAN_DIM - ship.getShipParts().length + 1);
+          randRow = r.nextInt(OCEAN_DIM - ship.getShipParts().size() + 1);
           randCol = r.nextInt(OCEAN_DIM);
           break;
       }
