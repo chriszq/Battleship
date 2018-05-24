@@ -1,5 +1,6 @@
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Board {
@@ -7,7 +8,8 @@ public class Board {
   public static final int OCEAN_DIM = 10;
 
   private Grid[][] ocean;
-  private Ship[] fleet;
+  //private Ship[] fleet;
+  private List<Ship> fleet;
 
   public Board() {
     this.ocean = new Grid[OCEAN_DIM][OCEAN_DIM];
@@ -17,6 +19,11 @@ public class Board {
       }
     }
 
+    this.fleet = new ArrayList<Ship>();
+    for (ShipType shipType : ShipType.values()) {
+      this.fleet.add(new Ship(shipType));
+    }
+/*
     this.fleet = new Ship[ShipType.values().length];
 
     int count = 0;
@@ -24,16 +31,21 @@ public class Board {
       this.fleet[count] = new Ship(shipType);
       count++;
     }
+*/
   }
   
   public Grid[][] getOcean() {
     return this.ocean;
   }
 
+  public List<Ship> getFleet() {
+    return this.fleet;
+  }
+/*
   public Ship[] getFleet() {
     return this.fleet;
   }
-
+*/
   public void printOcean() {
     /*print column numbers*/
     System.out.print("    ");
@@ -53,6 +65,7 @@ public class Board {
     System.out.println();
   }
 
+/*
   public boolean isFleetSunk() {
     for (Ship x : fleet) {
       if (!x.isShipSunk()) {
@@ -61,7 +74,7 @@ public class Board {
     } 
     return true;
   }
-
+*/
   public boolean isShipPartOverlap(int row, int col) {
     return (ocean[row][col].getClass() == ShipPart.class) ? true : false;
   }
