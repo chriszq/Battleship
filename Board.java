@@ -1,3 +1,4 @@
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -67,6 +68,7 @@ public class Board {
 
   public void putShipPartAt(int row, int col, ShipPart shipPart) {
     ocean[row][col] = shipPart;
+    shipPart.getPoint().setLocation(col, row);
   }
 
   public boolean isShipOverlap(int row, int col, Ship ship) {
