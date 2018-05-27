@@ -17,6 +17,14 @@ public class Computer implements Player {
 
   @Override
   public void fireAt(Board board) {
+    randomTarget(board).setHitStatus(HitStatus.HIT);
+  }
+
+  public Board getBoard() {
+    return this.board;
+  }
+
+  public Grid randomTarget(Board board) {
     Random r = new Random();   
     int row = 0;
     int col = 0;
@@ -26,10 +34,6 @@ public class Computer implements Player {
       col = r.nextInt(10);
     } while (board.getOcean()[row][col].getHitStatus() != HitStatus.UNHIT);
 
-    board.getOcean()[row][col].setHitStatus(HitStatus.HIT);
-  }
-
-  public Board getBoard() {
-    return this.board;
-  }
+    return board.getOcean()[row][col];
+  } 
 }

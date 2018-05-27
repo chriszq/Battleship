@@ -8,7 +8,6 @@ public class Board {
   public static final int OCEAN_DIM = 10;
 
   private Grid[][] ocean;
-  //private Ship[] fleet;
   private List<Ship> fleet;
 
   public Board() {
@@ -16,6 +15,7 @@ public class Board {
     for (int i = 0; i < OCEAN_DIM; i++) {
       for (int j = 0; j < OCEAN_DIM; j++) {
         this.ocean[i][j] = new Water();
+        this.ocean[i][j].getPoint().setLocation(j, i);
       }
     }
 
@@ -23,15 +23,6 @@ public class Board {
     for (ShipType shipType : ShipType.values()) {
       this.fleet.add(new Ship(shipType));
     }
-/*
-    this.fleet = new Ship[ShipType.values().length];
-
-    int count = 0;
-    for (ShipType shipType : ShipType.values()) {
-      this.fleet[count] = new Ship(shipType);
-      count++;
-    }
-*/
   }
   
   public Grid[][] getOcean() {
@@ -41,11 +32,7 @@ public class Board {
   public List<Ship> getFleet() {
     return this.fleet;
   }
-/*
-  public Ship[] getFleet() {
-    return this.fleet;
-  }
-*/
+
   public void printOcean() {
     /*print column numbers*/
     System.out.print("    ");
@@ -65,16 +52,6 @@ public class Board {
     System.out.println();
   }
 
-/*
-  public boolean isFleetSunk() {
-    for (Ship x : fleet) {
-      if (!x.isShipSunk()) {
-        return false;
-      }
-    } 
-    return true;
-  }
-*/
   public boolean isShipPartOverlap(int row, int col) {
     return (ocean[row][col].getClass() == ShipPart.class) ? true : false;
   }
@@ -149,7 +126,7 @@ public class Board {
     System.out.printf("random stuff are: %s, %s, %s\n ", randRow, randCol, ship.getOrientation());
   }
 
-  public boolean isCoordOutOfBounds(int coord) {
+  public static boolean isCoordOutOfBounds(int coord) {
     return (coord >= OCEAN_DIM || coord < 0);
   }
 

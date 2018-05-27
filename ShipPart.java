@@ -39,8 +39,14 @@ public class ShipPart implements Grid {
     this.hitStatus = hitStatus;
   }
 
+  @Override
   public Point getPoint() {
     return this.point;
+  }
+
+  @Override
+  public String toString() {
+    return String.format("%s", point);
   }
 
 }
