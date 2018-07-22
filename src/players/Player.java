@@ -1,3 +1,7 @@
+package players;
+
+import board.Board;
+
 public interface Player {
 
   void placeFleetOnBoard();

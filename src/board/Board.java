@@ -1,3 +1,12 @@
+package board;
+
+import shipcomponents.Grid;
+import shipcomponents.Orientation;
+import shipcomponents.Ship;
+import shipcomponents.ShipPart;
+import shipcomponents.ShipType;
+import shipcomponents.Water;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;

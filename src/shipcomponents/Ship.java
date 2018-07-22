@@ -4,6 +4,7 @@
  * All ShipParts belonging to a Ship are considered SUNK only after they have all been HIT.
  * When this happens the Ship is considered SUNK.
  */
+package shipcomponents;
 
 import java.util.ArrayList;
 

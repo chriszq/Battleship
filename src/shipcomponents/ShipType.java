@@ -1,6 +1,7 @@
 /*
  * All Ship Types that each player possess. There are two ships with length 3.
  */
+package shipcomponents;
 
 public enum ShipType {
   

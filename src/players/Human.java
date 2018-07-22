@@ -1,3 +1,12 @@
+package players;
+
+import shipcomponents.HitStatus;
+import shipcomponents.Orientation;
+import shipcomponents.Ship;
+import shipcomponents.ShipPart;
+
+import board.Board;
+
 import java.util.Scanner;
 
 public class Human implements Player {

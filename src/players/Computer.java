@@ -1,3 +1,12 @@
+package players;
+
+import board.Board;
+import shipcomponents.Grid;
+import shipcomponents.HitStatus;
+import shipcomponents.Orientation;
+import shipcomponents.Ship;
+import shipcomponents.ShipPart;
+
 import java.util.Random;
 
 public class Computer implements Player {

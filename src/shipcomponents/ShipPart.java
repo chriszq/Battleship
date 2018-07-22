@@ -3,6 +3,8 @@
  * Changes it's display icon depending on HitStatus.
  */
 
+package shipcomponents;
+
 import java.awt.Point;
 
 public class ShipPart implements Grid {

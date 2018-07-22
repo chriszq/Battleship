@@ -2,6 +2,7 @@
  * Represents the water that surrounds all the ships.
  * Water and Ship objects are indistinguishable to the opposing player until they have been hit.
  */
+package shipcomponents;
 
 import java.awt.Point;
 

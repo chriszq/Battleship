@@ -1,3 +1,10 @@
+package players;
+
+import board.Board;
+import shipcomponents.Grid;
+import shipcomponents.HitStatus;
+import shipcomponents.ShipPart;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
