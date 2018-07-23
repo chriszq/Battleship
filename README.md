@@ -1,5 +1,6 @@
 # Battleship Bot Strategy
-The `HuntTargetBot` will randomly search for a target on the board to hit until it hits a Ship. Upon doing so it will add the Northern, Southern, Eastern and Western points relative to it and add them to a stack (provided each point is not out of bounds, have been already been hit, already in the stack, etc.)
+The `HuntTargetBot` will randomly search for a target on the board to hit until it hits a Ship. Upon doing so it will add the Northern, Southern, Eastern and Western points relative to it and add them to a stack (provided each point is not out of bounds, have been already been hit, already in the stack, etc.).
+It will attempt to pop the stack if it's not empty and will keep pushing to the stack when the above conditions are met.
 
 Using this strategy instead of pure random guessing can noticeably reduce the number of steps it takes for the bot to sink an entire fleet.
 
